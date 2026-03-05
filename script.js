@@ -31,3 +31,15 @@ document.addEventListener("keydown", (e) => {
         clearDisplay();
     }
 });
+
+function calculate(){
+    try{
+        if(display.value.includes("/0")){
+            display.value = "Error: Division by zero";
+            return;
+        }
+        display.value = eval(display.value);
+    }catch{
+        display.value = "Error";
+    }
+}
