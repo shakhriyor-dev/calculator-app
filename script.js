@@ -1,7 +1,14 @@
 const display = document.getElementById("display");
 
 function appendValue(value){
-    if(display.value === "Error") display.value = "";
+
+    const operators = ['+','-','*','/'];
+    let lastChar = display.value.slice(-1);
+
+    if(operators.includes(value) && operators.includes(lastChar)){
+        return; // agar oxiri ham amal bo'lsa yangi amal qo'shilmaydi
+    }
+
     display.value += value;
 }
 
