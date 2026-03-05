@@ -43,3 +43,15 @@ function calculate(){
         display.value = "Error";
     }
 }
+
+function squareRoot(){
+    try{
+        if(display.value === ""){
+            display.value = "";
+            return;
+        }
+        display.value = Math.sqrt(eval(display.value));
+    }catch{
+        display.value = "Error";
+    }
+}
