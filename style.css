@@ -14,17 +14,19 @@ body{
 }
 
 #display{
-    width:90%;
+    width:92%;
     height:50px;
     font-size:22px;
     margin-bottom:10px;
     text-align:right;
     padding:10px;
+    border-radius: 10px;
+    color: #fff;
 }
 
 .buttons{
     display:grid;
-    grid-template-columns:repeat(4,60px);
+    grid-template-columns: repeat(4, 1fr);
     gap:10px;
 }
 
