@@ -1,6 +1,7 @@
 const display = document.getElementById("display");
 
 function appendValue(value){
+    if(display.value === "Error") display.value = "";
     display.value += value;
 }
 
@@ -14,31 +15,14 @@ function deleteLast(){
 
 function calculate(){
     try{
-        display.value = eval(display.value);
-    }catch{
-        display.value = "Error";
-    }
-}
 
-document.addEventListener("keydown", (e) => {
-    if(!isNaN(e.key) || ['+', '-', '*', '/', '.'].includes(e.key)){
-        appendValue(e.key);
-    } else if(e.key === "Enter"){
-        calculate();
-    } else if(e.key === "Backspace"){
-        deleteLast();
-    } else if(e.key === "Escape"){
-        clearDisplay();
-    }
-});
-
-function calculate(){
-    try{
         if(display.value.includes("/0")){
-            display.value = "Error: Division by zero";
+            display.value = "Error";
             return;
         }
-        display.value = eval(display.value);
+
+        display.value = Function('"use strict";return (' + display.value + ')')();
+
     }catch{
         display.value = "Error";
     }
@@ -46,12 +30,43 @@ function calculate(){
 
 function squareRoot(){
     try{
-        if(display.value === ""){
-            display.value = "";
+
+        if(display.value === "") return;
+
+        let num = Function('"use strict";return (' + display.value + ')')();
+
+        if(num < 0){
+            display.value = "Error";
             return;
         }
-        display.value = Math.sqrt(eval(display.value));
+
+        display.value = Math.sqrt(num);
+
     }catch{
         display.value = "Error";
     }
 }
+
+document.addEventListener("keydown",(e)=>{
+
+    if(!isNaN(e.key) || ['+','-','*','/','.'].includes(e.key)){
+        appendValue(e.key);
+    }
+
+    else if(e.key === "Enter"){
+        calculate();
+    }
+
+    else if(e.key === "Backspace"){
+        deleteLast();
+    }
+
+    else if(e.key === "Escape"){
+        clearDisplay();
+    }
+
+    else if(e.key.toLowerCase() === "r"){
+        squareRoot();
+    }
+
+});
