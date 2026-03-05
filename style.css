@@ -32,14 +32,20 @@ button{
     height:50px;
     font-size:18px;
     border:none;
-    border-radius:5px;
+    border-radius:8px;
     cursor:pointer;
+    background:#444;
+    color:white;
+    transition:0.2s;
 }
 
 button:hover{
-    background:#555;
-    transform: scale(1.05);
-    color:white;
+    background:#666;
+    transform:scale(1.08);
+}
+
+button:active{
+    transform:scale(0.95);
 }
 
 .zero{
