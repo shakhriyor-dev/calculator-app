@@ -9,6 +9,13 @@
 <body>
 
 <div class="calculator">
+
+    <!-- Theme color picker -->
+    <div class="color-picker">
+        <label for="themeColor">Theme:</label>
+        <input type="color" id="themeColor">
+    </div>
+
     <input type="text" id="display" disabled>
 
     <div class="buttons">
@@ -36,6 +43,7 @@
         <button onclick="appendValue('.')">.</button>
         <button onclick="calculate()">=</button>
     </div>
+
 </div>
 
 <script src="script.js"></script>
