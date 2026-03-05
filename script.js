@@ -77,3 +77,10 @@ document.addEventListener("keydown",(e)=>{
     }
 
 });
+
+const themeColor = document.getElementById("themeColor");
+const calculator = document.querySelector(".calculator");
+
+themeColor.addEventListener("input", () => {
+    calculator.style.background = themeColor.value;
+});
